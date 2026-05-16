@@ -46,10 +46,11 @@
   .divider {
     width: 15vw;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(232,184,75,0.6), transparent);
-    margin: 5vh auto;
+    background: linear-gradient(90deg, transparent, rgba(198,241,53,0.5), transparent);
+    margin: 4vh auto;
   }
 
+  /* 第一屏 */
   .s1-series {
     font-family: 'Noto Serif SC', serif;
     font-size: 9vw;
@@ -75,20 +76,22 @@
     text-shadow: 0 0 4vw rgba(232,184,75,0.4);
   }
 
-  .credit-block { width: 100%; margin-bottom: 4vh; }
+  /* 第二屏 */
+  .credit-block { width: 100%; margin-bottom: 3.5vh; }
   .credit-label {
     font-family: 'Share Tech Mono', monospace;
     font-size: 2.8vw;
     color: rgba(232,184,75,0.5);
     letter-spacing: 0.3em;
-    margin-bottom: 1.5vh;
+    margin-bottom: 1.2vh;
   }
   .credit-name {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 4.5vw;
-    color: #fff;
+    font-size: 4.2vw;
+    color: #C6F135;
     letter-spacing: 0.1em;
-    line-height: 1.8;
+    line-height: 1.9;
+    text-shadow: 0 0 4vw rgba(198,241,53,0.3);
   }
   .credit-name.gold {
     color: #E8B84B;
@@ -96,6 +99,7 @@
     text-shadow: 0 0 6vw rgba(232,184,75,0.4);
   }
 
+  /* 第三屏 */
   .social-handle {
     font-family: 'Share Tech Mono', monospace;
     font-size: 6vw;
@@ -109,7 +113,7 @@
     font-size: 4vw;
     color: rgba(255,255,255,0.5);
     letter-spacing: 0.15em;
-    margin-bottom: 6vh;
+    margin-bottom: 4vh;
   }
   .ep2-tag {
     font-family: 'Share Tech Mono', monospace;
@@ -120,8 +124,18 @@
     border: 1px solid rgba(232,184,75,0.35);
     border-radius: 4px;
     background: rgba(232,184,75,0.05);
+    margin-bottom: 4vh;
+  }
+  .cocreate-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 3.2vw;
+    color: #C6F135;
+    letter-spacing: 0.15em;
+    line-height: 2;
+    text-shadow: 0 0 3vw rgba(198,241,53,0.3);
   }
 
+  /* 第四屏 */
   .token-name {
     font-family: 'Share Tech Mono', monospace;
     font-size: 14vw;
@@ -132,15 +146,15 @@
   }
   .ca-label {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 2.8vw;
+    font-size: 2.5vw;
     color: rgba(232,184,75,0.4);
     letter-spacing: 0.3em;
     margin-bottom: 2vh;
   }
   .ca-address {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 3.2vw;
-    color: rgba(255,255,255,0.55);
+    font-size: 2.6vw;
+    color: rgba(255,255,255,0.45);
     letter-spacing: 0.05em;
     word-break: break-all;
     line-height: 1.8;
@@ -172,44 +186,54 @@
 <div class="stage">
   <canvas id="particles"></canvas>
 
+  <!-- 第一屏 -->
   <div class="screen" id="s1">
     <div class="s1-series">凡人修币录</div>
     <div class="s1-season">第二季 · 情绪之证</div>
     <div class="s1-ep">EP01 · 天降神针</div>
   </div>
 
+  <!-- 第二屏 -->
   <div class="screen" id="s2">
     <div class="credit-block">
       <div class="credit-label">出品</div>
       <div class="credit-name gold">$币安小说</div>
     </div>
+
     <div class="divider"></div>
-    <div class="credit-block">
-      <div class="credit-label">总导演</div>
-      <div class="credit-name">@bianxiaoshuo</div>
-    </div>
+
     <div class="credit-block">
       <div class="credit-label">编剧</div>
-      <div class="credit-name">@bianxiaoshuo · @dastby001</div>
+      <div class="credit-name">@directoraming · @Dastby001</div>
     </div>
+
     <div class="divider"></div>
+
     <div class="credit-block">
-      <div class="credit-label">图片渲染</div>
-      <div class="credit-name">@hz_hann · @zoey0x<br>@dastby001 · @Meichin333333</div>
+      <div class="credit-label">分镜与场景图</div>
+      <div class="credit-name">@hz_hann · @Meichin333333<br>@Dastby001</div>
     </div>
+
     <div class="credit-block">
       <div class="credit-label">视频制作</div>
-      <div class="credit-name">@dastby001 · @Meichin333333<br>@bianxiaoshuo</div>
+      <div class="credit-name">@Meichin333333 · @Dastby001</div>
     </div>
   </div>
 
+  <!-- 第三屏 -->
   <div class="screen" id="s3">
     <div class="social-handle">@bianxiaoshuo</div>
     <div class="social-site">bianxiaoshuo.com</div>
-    <div class="divider"></div>
     <div class="ep2-tag">EP2 · 制作中</div>
+    <div class="divider"></div>
+    <div class="cocreate-tag">
+      参与共创<br>
+      欢迎访问创作者圣经<br>
+      bianxiaoshuo.com
+    </div>
   </div>
 
+  <!-- 第四屏 -->
   <div class="screen" id="s4">
     <div class="token-name">$BAXS</div>
     <div class="ca-label">CONTRACT ADDRESS</div>
@@ -222,6 +246,7 @@
 </div>
 
 <script>
+// 金色粒子·更多更明显
 (function() {
   var canvas = document.getElementById('particles');
   var ctx = canvas.getContext('2d');
@@ -231,26 +256,33 @@
   }
   resize();
   window.addEventListener('resize', resize);
+
   var particles = [];
-  for (var i = 0; i < 60; i++) {
+  for (var i = 0; i < 150; i++) {
     particles.push({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
-      size: Math.random() * 1.5 + 0.3,
-      speedY: -(Math.random() * 0.4 + 0.15),
-      speedX: (Math.random() - 0.5) * 0.2,
-      opacity: Math.random() * 0.4 + 0.1,
+      size: Math.random() * 2.5 + 0.5,
+      speedY: -(Math.random() * 0.8 + 0.3),
+      speedX: (Math.random() - 0.5) * 0.3,
+      opacity: Math.random() * 0.7 + 0.2,
+      color: Math.random() > 0.6 ? '198,241,53' : '232,184,75',
     });
   }
+
   function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particles.forEach(function(p) {
       p.x += p.speedX;
       p.y += p.speedY;
-      if (p.y < -5) { p.x = Math.random() * canvas.width; p.y = canvas.height; }
+      if (p.y < -5) {
+        p.x = Math.random() * canvas.width;
+        p.y = canvas.height;
+        p.opacity = Math.random() * 0.7 + 0.2;
+      }
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(232,184,75,' + p.opacity + ')';
+      ctx.fillStyle = 'rgba(' + p.color + ',' + p.opacity + ')';
       ctx.fill();
     });
     requestAnimationFrame(animateParticles);
@@ -289,12 +321,16 @@ function startCredits() {
   hint.style.opacity = '0';
   setTimeout(function() { hint.style.display='none'; }, 500);
 
+  // 第一屏 3s
   showScreen('s1', 800, 3000, 800, function() {
     setTimeout(function() {
+      // 第二屏 8s
       showScreen('s2', 1000, 8000, 1000, function() {
         setTimeout(function() {
-          showScreen('s3', 800, 4000, 800, function() {
+          // 第三屏 5s
+          showScreen('s3', 800, 5000, 800, function() {
             setTimeout(function() {
+              // 第四屏 3s
               showScreen('s4', 800, 3000, 800, null);
             }, 200);
           });
