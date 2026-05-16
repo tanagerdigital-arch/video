@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>凡人修币录 S2 EP01 · 片尾字幕</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Noto+Serif+SC:wght@400;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; background: #000; overflow: hidden; }
+
+  .stage {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: 1;
+    padding: 8vw;
+    text-align: center;
+  }
+
+  .divider {
+    width: 15vw;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232,184,75,0.6), transparent);
+    margin: 5vh auto;
+  }
+
+  .s1-series {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 9vw;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 0.15em;
+    line-height: 1.3;
+    text-shadow: 0 0 8vw rgba(232,184,75,0.2);
+  }
+  .s1-season {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 3.5vw;
+    color: rgba(232,184,75,0.7);
+    letter-spacing: 0.2em;
+    margin-top: 3vh;
+  }
+  .s1-ep {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 4.5vw;
+    color: #E8B84B;
+    letter-spacing: 0.2em;
+    margin-top: 1.5vh;
+    text-shadow: 0 0 4vw rgba(232,184,75,0.4);
+  }
+
+  .credit-block { width: 100%; margin-bottom: 4vh; }
+  .credit-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 2.8vw;
+    color: rgba(232,184,75,0.5);
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5vh;
+  }
+  .credit-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 4.5vw;
+    color: #fff;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+  }
+  .credit-name.gold {
+    color: #E8B84B;
+    font-size: 6vw;
+    text-shadow: 0 0 6vw rgba(232,184,75,0.4);
+  }
+
+  .social-handle {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 6vw;
+    color: #E8B84B;
+    letter-spacing: 0.1em;
+    margin-bottom: 2vh;
+    text-shadow: 0 0 4vw rgba(232,184,75,0.4);
+  }
+  .social-site {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 4vw;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.15em;
+    margin-bottom: 6vh;
+  }
+  .ep2-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 4.5vw;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.2em;
+    padding: 2.5vw 8vw;
+    border: 1px solid rgba(232,184,75,0.35);
+    border-radius: 4px;
+    background: rgba(232,184,75,0.05);
+  }
+
+  .token-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14vw;
+    color: #E8B84B;
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 8vw rgba(232,184,75,0.5);
+    margin-bottom: 4vh;
+  }
+  .ca-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 2.8vw;
+    color: rgba(232,184,75,0.4);
+    letter-spacing: 0.3em;
+    margin-bottom: 2vh;
+  }
+  .ca-address {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 3.2vw;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+    word-break: break-all;
+    line-height: 1.8;
+    padding: 0 4vw;
+  }
+
+  .hint {
+    position: fixed;
+    bottom: 6vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 3.5vw;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+    z-index: 99;
+    text-align: center;
+    cursor: pointer;
+    padding: 2.5vw 7vw;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    transition: opacity 0.5s;
+    white-space: nowrap;
+  }
+  .hint:active { opacity: 0.5; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <canvas id="particles"></canvas>
+
+  <div class="screen" id="s1">
+    <div class="s1-series">凡人修币录</div>
+    <div class="s1-season">第二季 · 情绪之证</div>
+    <div class="s1-ep">EP01 · 天降神针</div>
+  </div>
+
+  <div class="screen" id="s2">
+    <div class="credit-block">
+      <div class="credit-label">出品</div>
+      <div class="credit-name gold">$币安小说</div>
+    </div>
+    <div class="divider"></div>
+    <div class="credit-block">
+      <div class="credit-label">总导演</div>
+      <div class="credit-name">@bianxiaoshuo</div>
+    </div>
+    <div class="credit-block">
+      <div class="credit-label">编剧</div>
+      <div class="credit-name">@bianxiaoshuo · @dastby001</div>
+    </div>
+    <div class="divider"></div>
+    <div class="credit-block">
+      <div class="credit-label">图片渲染</div>
+      <div class="credit-name">@hz_hann · @zoey0x<br>@dastby001 · @Meichin333333</div>
+    </div>
+    <div class="credit-block">
+      <div class="credit-label">视频制作</div>
+      <div class="credit-name">@dastby001 · @Meichin333333<br>@bianxiaoshuo</div>
+    </div>
+  </div>
+
+  <div class="screen" id="s3">
+    <div class="social-handle">@bianxiaoshuo</div>
+    <div class="social-site">bianxiaoshuo.com</div>
+    <div class="divider"></div>
+    <div class="ep2-tag">EP2 · 制作中</div>
+  </div>
+
+  <div class="screen" id="s4">
+    <div class="token-name">$BAXS</div>
+    <div class="ca-label">CONTRACT ADDRESS</div>
+    <div class="ca-address">0x7a1f2c923fc0d6c05f40f58e55999dcc88784444</div>
+  </div>
+
+  <div class="hint" id="hint" onclick="startCredits()">
+    ▶ 点击开始 · 请先开启录屏
+  </div>
+</div>
+
+<script>
+(function() {
+  var canvas = document.getElementById('particles');
+  var ctx = canvas.getContext('2d');
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  var particles = [];
+  for (var i = 0; i < 60; i++) {
+    particles.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      size: Math.random() * 1.5 + 0.3,
+      speedY: -(Math.random() * 0.4 + 0.15),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.4 + 0.1,
+    });
+  }
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(function(p) {
+      p.x += p.speedX;
+      p.y += p.speedY;
+      if (p.y < -5) { p.x = Math.random() * canvas.width; p.y = canvas.height; }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(232,184,75,' + p.opacity + ')';
+      ctx.fill();
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+})();
+
+function fadeIn(el, dur, cb) {
+  var s = Date.now();
+  el.style.opacity = 0;
+  var t = setInterval(function() {
+    var p = (Date.now()-s)/dur;
+    if (p>=1) { el.style.opacity=1; clearInterval(t); if(cb) cb(); }
+    else { el.style.opacity=p; }
+  }, 16);
+}
+
+function fadeOut(el, dur, cb) {
+  var s = Date.now();
+  var t = setInterval(function() {
+    var p = (Date.now()-s)/dur;
+    if (p>=1) { el.style.opacity=0; clearInterval(t); if(cb) cb(); }
+    else { el.style.opacity=1-p; }
+  }, 16);
+}
+
+function showScreen(id, fi, hold, fo, cb) {
+  var el = document.getElementById(id);
+  fadeIn(el, fi, function() {
+    setTimeout(function() { fadeOut(el, fo, cb); }, hold);
+  });
+}
+
+function startCredits() {
+  var hint = document.getElementById('hint');
+  hint.style.opacity = '0';
+  setTimeout(function() { hint.style.display='none'; }, 500);
+
+  showScreen('s1', 800, 3000, 800, function() {
+    setTimeout(function() {
+      showScreen('s2', 1000, 8000, 1000, function() {
+        setTimeout(function() {
+          showScreen('s3', 800, 4000, 800, function() {
+            setTimeout(function() {
+              showScreen('s4', 800, 3000, 800, null);
+            }, 200);
+          });
+        }, 200);
+      });
+    }, 200);
+  });
+}
+</script>
+</body>
+</html>
